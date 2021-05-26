@@ -1,14 +1,88 @@
-import React from "react";
-import "./Header.css";
+import React, { useState } from "react";
+import "./css/Header.css";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
-function Header() {
+function Header(props) {
+  const [toggle, setToggle] = useState(true);
+  const [namer, setNamer] = useState("");
+
+  const giveName = () => {
+    setToggle(!toggle);
+    if (toggle === true) {
+      setNamer("show");
+    } else {
+      setNamer("");
+    }
+  };
+  console.log(toggle);
+  console.log(namer);
+
   return (
     <div className="header">
-      <h1>Logo</h1>
+      <h1>
+        <Link to="/" id="logo">
+          Logo
+        </Link>
+      </h1>
       <nav>
-          <div className="bar"></div>
-          <div className="bar"></div>
-          <div className="bar"></div>
+        <div className='cart-and-stuff'>
+          <Link to='/cart' id="cart"><FontAwesomeIcon icon={faShoppingCart} /></Link>
+          <div className={`hamburger ${namer}`} onClick={giveName}>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+          </div>
+        </div>
+        <div className={`${namer} mini-menu`}>
+          <div
+            className={`hamburger self-aligner-hamburger`}
+            onClick={giveName}
+          >
+            <div className="bar top-x"></div>
+            <div className="bar bottom-x"></div>
+          </div>
+          <ul>
+            <li>
+              <Link to="/" onClick={giveName}>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/info" onClick={giveName}>
+                Information
+              </Link>
+            </li>
+            <li>
+              <Link to="/shop" onClick={giveName}>
+                Shop
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" onClick={giveName}>
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link to="/cart" onClick={giveName}>
+                Cart
+              </Link>
+            </li>
+            <li>
+              <Link to="/account" onClick={giveName}>
+                Account
+              </Link>
+            </li>
+          </ul>
+          <ul>
+            <li id="self-aligner-login">
+              <Link to="/auth" onClick={giveName}>
+                Login | Register
+              </Link>
+            </li>
+          </ul>
+        </div>
       </nav>
     </div>
   );
