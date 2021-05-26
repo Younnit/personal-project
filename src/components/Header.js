@@ -16,8 +16,6 @@ function Header(props) {
       setNamer("");
     }
   };
-  console.log(toggle);
-  console.log(namer);
 
   return (
     <div className="header">
