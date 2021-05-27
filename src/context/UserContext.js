@@ -4,7 +4,7 @@ import axios from 'axios'
 export const UserContext = createContext()
 
 export const UserProvider = ({children}) => {
-    const [user, setUser] = useState('')
+    const [user, setUser] = useState(null)
     const handleRegister = (email, password) => {
         axios.post('/auth/register', {email, password}).then(res => {
             setUser(res.data)

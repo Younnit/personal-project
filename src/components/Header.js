@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./css/Header.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { UserContext } from "../context/UserContext";
 
 function Header(props) {
   const [toggle, setToggle] = useState(true);
   const [namer, setNamer] = useState("");
+  const {user} = useContext(UserContext)
 
-  const giveName = () => {
+  const giveName = (props) => {
     setToggle(!toggle);
     if (toggle === true) {
       setNamer("show");
@@ -26,6 +28,8 @@ function Header(props) {
       </h1>
       <nav>
         <div className='cart-and-stuff'>
+          {user && <h3 id="homepage">Hello, {user.email}</h3>}
+          {!user && <Link to="/auth"><button id="signInBtn">Log in | Register</button></Link>}
           <Link to='/cart' id="cart"><FontAwesomeIcon icon={faShoppingCart} /></Link>
           <div className={`hamburger ${namer}`} onClick={giveName}>
             <div className="bar"></div>

@@ -8,6 +8,7 @@ import Contact from './components/Contact'
 import Info from './components/Info'
 import Shop from './components/Shop'
 
+
 export default (
     <Switch>
         <Route exact path='/' component={Home} />
