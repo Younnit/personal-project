@@ -13,7 +13,7 @@ function Auth(props) {
         <label>Enter your email</label>
         <input value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
         <label>Enter your password</label>
-        <input value={password} placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
+        <input type='password' value={password} placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
       </div>
 
       <div className='buttons'>

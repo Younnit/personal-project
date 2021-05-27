@@ -34,7 +34,7 @@ a{
 #cart{
     color: #1b1b1b;
     font-size: 16pt;
-    margin-right: 2rem;
+    margin-right: 0.5rem;
     padding: 0.15rem;
 }
 
@@ -105,8 +105,9 @@ a{
   text-align: center;
 }
 #homepage{
-  margin-right: 2rem;
+  margin-right: 0.5rem;
   padding: 0.15rem;
+  font-size: 10pt;
 }
 
 #signInBtn{

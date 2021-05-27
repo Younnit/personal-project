@@ -14,7 +14,7 @@ function Home(props) {
         />
         <button className="signUpBtn">Join our Newsletter</button>
         <h1>What causes back pain?</h1>
-        <p>loremdasf hjkahsdf kjlhasdl kjfhakj dshfkjhasdkjf hakjsdhfkjahsdfkjhasdkj fhakljsdfh kjahsdkjhaksdj fhakljdhfkjasdhf kjahdkjfhadksjfh kajdsfhjkahsd kjfhasdkj fhaskljdhf kjasdhf kjlahsdf kljhasdkjfh ailusdfhalkjsdhf laiksdhf liuahsdfik hasdikfh asldifghasldkhf alisdh fliadsh fliasdhf liashd fiasdhf iha siahd iklfahsdli fhailsudf haiusdhf ilasuhd liuhafwdes</p>
+        <p>Some common causes of back pain can include: Muscle strain, Arthritis, Osteoporosis, and Bulged/ruptured disks. In each of these cases, it becomes uncomfortable to do even some common tasks. <br /><br /> jhadslkfjhalsdkfjhlaksjdf</p>
       </div>
     </div>
   );
