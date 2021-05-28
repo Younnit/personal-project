@@ -4,7 +4,7 @@ import axios from 'axios'
 export const CartContext = createContext()
 
 export const CartProvider = ({children}) => {
-    const [cart, setCart] = useState(null)
+    const [cart, setCart] = useState({})
 
     const addToCart = (product_id) => {
         axios.post(`/api/cart/${product_id}`).then(res => {

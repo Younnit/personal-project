@@ -8,7 +8,7 @@ import { UserContext } from "../context/UserContext";
 function Header(props) {
   const [toggle, setToggle] = useState(true);
   const [namer, setNamer] = useState("");
-  const {user} = useContext(UserContext)
+  const {user, handleLogout} = useContext(UserContext)
 
   const giveName = (props) => {
     setToggle(!toggle);
@@ -19,6 +19,11 @@ function Header(props) {
     }
   };
 
+  const setAside = () => {
+    giveName();
+    handleLogout();
+  }
+
   return (
     <div className="header">
       <h1>
@@ -28,7 +33,7 @@ function Header(props) {
       </h1>
       <nav>
         <div className='cart-and-stuff'>
-          {user && <h3 id="homepage">Hello, {user.email}</h3>}
+          {user && <Link to='/account'><h3 id="homepage">Hello, {user.email}</h3></Link>}
           {!user && <Link to="/auth"><button id="signInBtn">Log in | Register</button></Link>}
           <Link to='/cart' id="cart"><FontAwesomeIcon icon={faShoppingCart} /></Link>
           <div className={`hamburger ${namer}`} onClick={giveName}>
@@ -77,13 +82,20 @@ function Header(props) {
               </Link>
             </li>
           </ul>
-          <ul>
+          {!user && <ul>
             <li id="self-aligner-login">
               <Link to="/auth" onClick={giveName}>
                 Login | Register
               </Link>
             </li>
-          </ul>
+          </ul>}
+          {user && <ul>
+              <li id="self-aligner-login">
+                <Link to='/' onClick={
+                  setAside
+                }>Logout</Link>
+              </li>
+            </ul>}
         </div>
       </nav>
     </div>

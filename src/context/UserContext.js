@@ -16,12 +16,19 @@ export const UserProvider = ({children}) => {
             setUser(res.data)
         }).catch(err => console.log(err))
     }
+
+    const handleLogout = () => {
+        axios.get('/auth/logout').then(_ => {
+            setUser(null)
+        })
+    }
     return (
         <UserContext.Provider value={{
             user,
             setUser,
             handleRegister,
-            handleLogin
+            handleLogin,
+            handleLogout
         }}>
             {children}
         </UserContext.Provider>

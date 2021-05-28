@@ -6,6 +6,7 @@ function Shop() {
     const { user } = useContext(UserContext);
     const [shop, setShop] = useState([])
     useEffect(()=> {
+
         axios.get('/api/products').then(res => {
             setShop(res.data)
         }).catch(err => console.log(err))
