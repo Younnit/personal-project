@@ -20,23 +20,24 @@ import { formatRelative } from "date-fns";
 
 import "@reach/combobox/styles.css";
 // import { id } from "date-fns/locale";
-import mapStyles from './css/mapStyles'
+// import mapStyles from './css/mapStyles'
+import './css/Map.css'
 // require("dotenv").config()
 
 const libraries = ["places"];
 
 const mapContainerStyle = {
   width: "100vw",
-  height: "80vh",
+  height: "92vh",
 };
 
-// const center = {
-//   lat: 37.10828,
-//   lng: -113.583282,
-// };
+const center = {
+  lat: 37.10828,
+  lng: -113.583282,
+};
 
 const options = {
-    styles: mapStyles,
+    // styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
 };
@@ -74,12 +75,12 @@ function Map() {
   }, []);
 
   return isLoaded ? (
-    <div>
+    <div id="lowerIt">
       {/* <Search /> */}
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={4}
-        center={{ lat: 37.09024, lng: -95.712891 }}
+        zoom={8}
+        center={center}
         options={options}
         onClick={onMapClick}
         onLoad={onLoad}
@@ -101,7 +102,7 @@ function Map() {
             }}
           >
             <div>
-              <h2>VolleyBall Court</h2>
+              <h4>VolleyBall Court</h4>
               <p>Added {formatRelative(selected.time, new Date())}</p>
             </div>
           </InfoWindow>

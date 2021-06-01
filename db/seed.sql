@@ -9,11 +9,11 @@ CREATE TABLE users(
     password VARCHAR(1000)
 );
 
-CREATE TABLE carts(
-    cart_id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(user_id),
-    active BOOLEAN
-);
+-- CREATE TABLE carts(
+--     cart_id SERIAL PRIMARY KEY,
+--     user_id INT REFERENCES users(user_id),
+--     active BOOLEAN
+-- );
 
 CREATE TABLE products(
     product_id SERIAL PRIMARY KEY,
@@ -22,9 +22,9 @@ CREATE TABLE products(
     img VARCHAR(10000)
 );
 
-CREATE TABLE user_cart_junction(
-    user_cart_id SERIAL PRIMARY KEY,
-    cart_id INT REFERENCES carts(cart_id),
-    product_id INT REFERENCES products(product_id),
-    quantity INT
-);
+-- CREATE TABLE user_cart_junction(
+--     user_cart_id SERIAL PRIMARY KEY,
+--     cart_id INT REFERENCES carts(cart_id),
+--     product_id INT REFERENCES products(product_id),
+--     quantity INT
+-- );

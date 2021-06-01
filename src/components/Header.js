@@ -35,7 +35,6 @@ function Header(props) {
         <div className='cart-and-stuff'>
           {user && <Link to='/account'><h3 id="homepage">Hello, {user.email}</h3></Link>}
           {!user && <Link to="/auth"><button id="signInBtn">Log in | Register</button></Link>}
-          <Link to='/cart' id="cart"><FontAwesomeIcon icon={faShoppingCart} /></Link>
           <div className={`hamburger ${namer}`} onClick={giveName}>
             <div className="bar"></div>
             <div className="bar"></div>
@@ -67,18 +66,13 @@ function Header(props) {
               </Link>
             </li>
             <li>
-              <Link to="/shop" onClick={giveName}>
-                Shop
+              <Link to="/Products" onClick={giveName}>
+                Gear
               </Link>
             </li>
             <li>
               <Link to="/contact" onClick={giveName}>
                 Contact
-              </Link>
-            </li>
-            <li>
-              <Link to="/cart" onClick={giveName}>
-                Cart
               </Link>
             </li>
             <li>
