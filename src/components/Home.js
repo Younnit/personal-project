@@ -12,16 +12,13 @@ function Home(props) {
     <div className="homepage">
       <div className="content">
         <img
-          src="https://images.unsplash.com/photo-1539815208687-a0f05e15d601?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80"
+          src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1168&q=80"
           alt="Spine x-ray"
         />
         <button className="signUpBtn">Join our Newsletter</button>
-        <h1>What causes back pain?</h1>
+        <h1>Why play volleyball?</h1>
         <p>
-          Some common causes of back pain can include: Muscle strain, Arthritis,
-          Osteoporosis, and Bulged/ruptured disks. In each of these cases, it
-          becomes uncomfortable to do even some common tasks. <br />
-          <br /> jhadslkfjhalsdkfjhlaksjdf
+          Volleyball is a sport that can be both competitive and fun. 
         </p>
       </div>
     </div>

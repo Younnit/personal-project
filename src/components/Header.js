@@ -62,6 +62,11 @@ function Header(props) {
               </Link>
             </li>
             <li>
+              <Link to="/map" onClick={giveName}>
+                Map
+              </Link>
+            </li>
+            <li>
               <Link to="/shop" onClick={giveName}>
                 Shop
               </Link>
