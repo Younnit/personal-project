@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
 import "./css/Header.css";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "../context/UserContext";
 
 function Header(props) {
@@ -33,7 +33,7 @@ function Header(props) {
       </h1>
       <nav>
         <div className='cart-and-stuff'>
-          {user && <Link to='/account'><h3 id="homepage">Hello, {user.email}</h3></Link>}
+          {user && <Link to='/account'><h3 id="homepage">Hello, {user.username}</h3></Link>}
           {!user && <Link to="/auth"><button id="signInBtn">Log in | Register</button></Link>}
           <div className={`hamburger ${namer}`} onClick={giveName}>
             <div className="bar"></div>

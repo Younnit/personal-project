@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext";
 import {
   GoogleMap,
   Marker,
@@ -43,6 +44,9 @@ const options = {
 };
 
 function Map() {
+
+  const { user } = useContext(UserContext);
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -74,6 +78,8 @@ function Map() {
     ]);
   }, []);
 
+  // console.log(user)
+
   return isLoaded ? (
     <div id="lowerIt">
       {/* <Search /> */}
@@ -101,9 +107,9 @@ function Map() {
               setSelected(null);
             }}
           >
-            <div>
+            <div className='infoWindow'>
               <h4>VolleyBall Court</h4>
-              <p>Added {formatRelative(selected.time, new Date())}</p>
+              <p>Added {formatRelative(selected.time, new Date())} <br />Made by: <u>{user.username}</u></p>
             </div>
           </InfoWindow>
         ) : null}

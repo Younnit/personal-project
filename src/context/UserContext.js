@@ -5,14 +5,14 @@ export const UserContext = createContext()
 
 export const UserProvider = ({children}) => {
     const [user, setUser] = useState(null)
-    const handleRegister = (email, password) => {
-        axios.post('/auth/register', {email, password}).then(res => {
+    const handleRegister = (username, password) => {
+        axios.post('/auth/register', {username, password}).then(res => {
             setUser(res.data)
         }).catch(err => console.log(err))
     }
 
-    const handleLogin = (email, password) => {
-        axios.post('/auth/login', {email, password}).then(res => {
+    const handleLogin = (username, password) => {
+        axios.post('/auth/login', {username, password}).then(res => {
             setUser(res.data)
         }).catch(err => console.log(err))
     }

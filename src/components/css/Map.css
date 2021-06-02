@@ -1,0 +1,12 @@
+.infoWindow{
+    padding: 0.5rem;
+}
+
+.infoWindow h4{
+    font-size: 14pt;
+    margin-bottom: 0.5rem;
+}
+
+.infoWindow p{
+    line-height: 150%;
+}
