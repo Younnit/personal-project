@@ -1,9 +1,8 @@
 import React, { useState, useContext } from "react";
 import "./css/Header.css";
 import { Link } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "../context/UserContext";
+import courtFinder from '../images/courtFinder.png'
 
 function Header(props) {
   const [toggle, setToggle] = useState(true);
@@ -28,7 +27,7 @@ function Header(props) {
     <div className="header">
       <h1>
         <Link to="/" id="logo">
-          Logo
+          <img src={courtFinder} alt='Logo'/>
         </Link>
       </h1>
       <nav>

@@ -55,3 +55,45 @@
 .content h1{
   margin-bottom: 1rem;
 }
+
+.newOne{
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #ffffff00;
+  backdrop-filter: blur(8px);
+}
+
+.flicker{
+  display: block;
+}
+
+.theX{
+  cursor: pointer;
+  padding: 1rem;
+  font-size: 16pt;
+  color: white;
+}
+
+.popUp{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5rem;
+  border-radius: 2rem;
+  background-color: #1b1b1b;
+}
+
+.popUp h3{
+  color: white;
+  font-size: 12pt;
+  font-weight: 400;
+}
+
+.popUp p{
+  color: white;
+}

@@ -10,8 +10,14 @@
   justify-content: space-between;
   align-items: center;
   height: 8vh;
-  background: linear-gradient(#a7a7a7, #ffffff);
+  background-color: #fff;
 }
+
+.header img{
+  height: 6vh;
+  width: auto;
+}
+
 .hamburger {
   cursor: pointer;
   padding: 0.15rem;

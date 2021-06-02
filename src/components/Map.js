@@ -6,24 +6,12 @@ import {
   InfoWindow,
   useJsApiLoader,
 } from "@react-google-maps/api";
-// import usePlacesAutocomplete, {
-//   getGeocode,
-//   getLatLng,
-// } from "use-places-autocomplete";
-// import {
-//   Combobox,
-//   ComboboxInput,
-//   ComboboxPopover,
-//   ComboboxList,
-//   ComboboxOption,
-// } from "@reach/combobox";
 import { formatRelative } from "date-fns";
 
 import "@reach/combobox/styles.css";
-// import { id } from "date-fns/locale";
 // import mapStyles from './css/mapStyles'
 import './css/Map.css'
-// require("dotenv").config()
+
 
 const libraries = ["places"];
 
@@ -91,7 +79,7 @@ function Map() {
         onClick={onMapClick}
         onLoad={onLoad}
       >
-        {markers.map((marker) => (
+        {user && markers.map((marker) => (
           <Marker
             key={marker.time.toISOString()}
             position={{ lat: marker.lat, lng: marker.lng }}
