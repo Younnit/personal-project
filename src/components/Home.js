@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import "./css/Home.css";
@@ -6,7 +7,13 @@ function Home(props) {
   const { user } = useContext(UserContext);
   const [flick, setFlick] = useState(true);
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   console.log(user);
+  console.log(email);
+
+  const addEmail = (value) => {
+    axios.post('/api/emails', {value})
+  }
 
   const handleName = (props) => {
     setFlick(!flick);
@@ -32,11 +39,17 @@ function Home(props) {
         <p>Volleyball is a sport that can be both competitive and fun.</p>
       </div>
       <div className={`newOne ${name}`}>
-        <div className='popUp'>
-          <span onClick={handleName} className='theX'>X</span>
+        <div className="popUp">
+          <span onClick={handleName} className="theX">
+            X
+          </span>
           <h3>Please enter your email to join</h3>
-          <input placeholder="name@email.com"/>
-          <button>Submit</button>
+          <input
+            value={email}
+            placeholder="name@email.com"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button onClick={() => addEmail(email)}>Submit</button>
         </div>
       </div>
     </div>
