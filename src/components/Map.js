@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
 import {
   GoogleMap,
@@ -10,8 +10,8 @@ import { formatRelative } from "date-fns";
 
 import "@reach/combobox/styles.css";
 // import mapStyles from './css/mapStyles'
-import './css/Map.css'
-
+import "./css/Map.css";
+// import axios from "axios";
 
 const libraries = ["places"];
 
@@ -26,13 +26,12 @@ const center = {
 };
 
 const options = {
-    // styles: mapStyles,
+  // styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
 };
 
 function Map() {
-
   const { user } = useContext(UserContext);
 
   const { isLoaded } = useJsApiLoader({
@@ -44,6 +43,17 @@ function Map() {
   const [map, setMap] = React.useState(null);
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
+  const [points, setPoints] = useState([]);
+
+  // useEffect(() => {
+  //   axios.get('/api/positions').then(res => {
+  //     setPoints(res.data)
+  //   }).catch(err => console.log(err))
+  // })
+
+  // const handleCreate =() => {
+  //   axios.post('/api/create')
+  // }
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
@@ -79,15 +89,23 @@ function Map() {
         onClick={onMapClick}
         onLoad={onLoad}
       >
-        {user && markers.map((marker) => (
+        {/* {points.map(position => {
           <Marker
-            key={marker.time.toISOString()}
-            position={{ lat: marker.lat, lng: marker.lng }}
-            onClick={() => {
-              setSelected(marker);
-            }}
+          key={position.time.toISOString()}
+          position={{lat: position.lat, lng: position.lng}}
           />
-        ))}
+        })} */}
+
+        {user &&
+          markers.map((marker) => (
+            <Marker
+              key={marker.time.toISOString()}
+              position={{ lat: marker.lat, lng: marker.lng }}
+              onClick={() => {
+                setSelected(marker);
+              }}
+            />
+          ))}
         {selected ? (
           <InfoWindow
             position={{ lat: selected.lat, lng: selected.lng }}
@@ -95,9 +113,18 @@ function Map() {
               setSelected(null);
             }}
           >
-            <div className='infoWindow'>
+            <div className="infoWindow">
               <h4>VolleyBall Court</h4>
-              <p>Added {formatRelative(selected.time, new Date())} <br />Made by: <u>{user.username}</u></p>
+              <p>Added {formatRelative(selected.time, new Date())}</p>
+              <div className="newFlex">
+                <p>
+                  Made by: <u>{user.username}</u>
+                </p>
+                <button>Delete</button>
+                {/* {user.username === points.username ? (
+                  <button onClick={() => handleDelete(points.position_id)}>Delete</button>
+                ) : null} */}
+              </div>
             </div>
           </InfoWindow>
         ) : null}

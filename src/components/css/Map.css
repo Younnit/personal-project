@@ -1,5 +1,6 @@
 .infoWindow{
     padding: 0.5rem;
+    width: auto;
 }
 
 .infoWindow h4{
@@ -9,4 +10,22 @@
 
 .infoWindow p{
     line-height: 150%;
+}
+
+.newFlex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.infoWindow button{
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-bottom: solid 1px #1b1b1b;
+    cursor: pointer;
+    font-size: 9pt;
+    height: 10%;
+    background-color: white;
+    margin-left: 1rem;
 }

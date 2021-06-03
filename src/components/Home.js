@@ -34,8 +34,8 @@ function Home(props) {
       <div className={`newOne ${name}`}>
         <div className='popUp'>
           <span onClick={handleName} className='theX'>X</span>
-          <h3>This is the popUp</h3>
-          <input placeholder="Enter an email" />
+          <h3>Please enter your email to join</h3>
+          <input placeholder="name@email.com"/>
           <button>Submit</button>
         </div>
       </div>
