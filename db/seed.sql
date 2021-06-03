@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS positions;
 DROP TABLE IF EXISTS emails;
 DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS users;
@@ -18,6 +19,14 @@ CREATE TABLE products(
 CREATE TABLE emails(
     email_id SERIAL PRIMARY KEY,
     email VARCHAR(150)
+);
+
+CREATE TABLE positions(
+    position_id SERIAL PRIMARY KEY,
+    lat INTEGER,
+    lng INTEGER,
+    username VARCHAR(100),
+    time VARCHAR(2000)
 );
 
 -- DROP TABLE IF EXISTS user_cart_junction;

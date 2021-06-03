@@ -6,6 +6,7 @@ require("dotenv").config();
 const authCTRL = require('./controllers/authController')
 const productsCTRL = require('./controllers/productsController')
 // const cartCTRL = require('./controllers/cartController')
+const positionsCTRL = require('./controllers/positionController')
 
 const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env;
 
@@ -40,6 +41,9 @@ app.post('/auth/login', authCTRL.login)
 app.get('/auth/logout', authCTRL.logout)
 
 app.get('/api/products', productsCTRL.getTheProducts)
+
+app.get('/api/positions', positionsCTRL.getPositions)
+app.post('api/create', positionsCTRL.createPosition)
 
 // app.get('/api/cart', cartCTRL.getCart)
 // app.post('/api/cart/:product_id', cartCTRL.addToCart)
