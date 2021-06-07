@@ -1,6 +1,8 @@
 const express = require("express");
 const massive = require("massive");
 const session = require("express-session");
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 require("dotenv").config();
 
 const authCTRL = require('./controllers/authController')
@@ -47,6 +49,21 @@ app.get('/api/positions', positionsCTRL.getPositions)
 app.post('api/create', positionsCTRL.createPosition)
 
 app.post('/api/emails', emailCTRL.addEmail)
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+
+app.use(bodyParser.json())
+app.use(cookieParser())
+
+const {sendEmail} = require('./mailer')
+
+app.post('/api/sendMail', (req, res) => {
+  console.log(req.body)
+
+  sendEmail(req.body.email, 'hello')
+})
 
 // app.get('/api/cart', cartCTRL.getCart)
 // app.post('/api/cart/:product_id', cartCTRL.addToCart)

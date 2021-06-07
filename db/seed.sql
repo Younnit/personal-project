@@ -25,8 +25,7 @@ CREATE TABLE positions(
     position_id SERIAL PRIMARY KEY,
     lat INTEGER,
     lng INTEGER,
-    username VARCHAR(100),
-    time VARCHAR(2000)
+    username VARCHAR(100)
 );
 
 -- DROP TABLE IF EXISTS user_cart_junction;

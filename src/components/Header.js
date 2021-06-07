@@ -55,11 +55,6 @@ function Header(props) {
               </Link>
             </li>
             <li>
-              <Link to="/info" onClick={giveName}>
-                Information
-              </Link>
-            </li>
-            <li>
               <Link to="/map" onClick={giveName}>
                 Map
               </Link>
@@ -72,11 +67,6 @@ function Header(props) {
             <li>
               <Link to="/contact" onClick={giveName}>
                 Contact
-              </Link>
-            </li>
-            <li>
-              <Link to="/account" onClick={giveName}>
-                Account
               </Link>
             </li>
           </ul>

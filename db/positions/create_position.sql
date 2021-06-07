@@ -1,4 +1,4 @@
 INSERT INTO positions
-(lat, lng, username, time)
+(lat, lng, username)
 VALUES
-($1, $2, $3, $4);
+($1, $2, $3);

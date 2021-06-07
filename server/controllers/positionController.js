@@ -11,8 +11,8 @@ module.exports = {
     createPosition: async (req, res) => {
         const db = req.app.get('db')
         const {user} = req.body
-        const {lat, lng, username, time} = req.body
-        const position = db.positions.create_position(lat, lng, username, time)
+        const {lat, lng, username} = req.body
+        const position = db.positions.create_position(lat, lng, username)
         return res.status(200).send(position)
     },
     deletePosition: async (req, res) => {
