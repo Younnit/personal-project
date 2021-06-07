@@ -29,16 +29,16 @@ function Home(props) {
     // e.preventDefault();
 
     const dataToSubmit = {
-        email
-    }
+      email,
+    };
 
-    axios.post('/api/sendMail', dataToSubmit)
-  }
+    axios.post("/api/sendMail", dataToSubmit);
+  };
 
   const together = () => {
-    handleName()
-    handleSubmit()
-  }
+    handleName();
+    handleSubmit();
+  };
 
   return (
     <div className="homepage">
@@ -50,13 +50,13 @@ function Home(props) {
         {/* <button className="signUpBtn" onClick={handleName}>
           Join our Newsletter
         </button> */}
-        <div className='btns'>
-          {user && (
-            <button className="signUpBtn" onClick={handleName}>
-              Join our Newsletter
-            </button>
-          )}
-          <Link to='/map'><button className="signUpBtn">Find a court</button></Link>
+        <div className="btns">
+          <button className="signUpBtn" onClick={handleName}>
+            Join our Newsletter
+          </button>
+          <Link to="/map">
+            <button className="signUpBtn">Find a court</button>
+          </Link>
         </div>
 
         <h3>Volleyball</h3>
@@ -89,12 +89,12 @@ function Home(props) {
           </span>
           <h3>Please enter your email to join</h3>
           <form onSubmit={handleSubmit}>
-          <input
-            value={email}
-            placeholder="name@email.com"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <button onClick={together}>Submit</button>
+            <input
+              value={email}
+              placeholder="name@email.com"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <button onClick={together}>Submit</button>
           </form>
         </div>
       </div>
