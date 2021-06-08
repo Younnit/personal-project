@@ -6,12 +6,9 @@ import {
   InfoWindow,
   useJsApiLoader,
 } from "@react-google-maps/api";
-import { formatRelative } from "date-fns";
 
 import "@reach/combobox/styles.css";
-// import mapStyles from './css/mapStyles'
 import "./css/Map.css";
-// import axios from "axios";
 
 const libraries = ["places"];
 
@@ -26,7 +23,6 @@ const center = {
 };
 
 const options = {
-  // styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
 };
@@ -43,17 +39,22 @@ function Map() {
   const [map, setMap] = React.useState(null);
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
-  const [points, setPoints] = useState([]);
 
   // useEffect(() => {
   //   axios.get('/api/positions').then(res => {
-  //     setPoints(res.data)
+  //     setMarkers(res.data)
   //   }).catch(err => console.log(err))
-  // })
+  // }, [] )
 
-  // const handleCreate =() => {
+  // const handleCreate = () => {
   //   axios.post('/api/create')
   // }
+
+  // const handleDelete = (id) => {
+  //   axios.delete(`/api/delete/${id}`)
+  // }
+
+  console.log(markers);
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
@@ -61,26 +62,24 @@ function Map() {
     setMap(map);
   }, []);
 
-  // const onUnmount = React.useCallback(function callback(map) {
-  //   setMap(null)
-  // }, [])
-
   const onMapClick = React.useCallback((e) => {
     setMarkers((current) => [
       ...current,
       {
         lat: e.latLng.lat(),
         lng: e.latLng.lng(),
-        time: new Date(),
       },
     ]);
   }, []);
 
-  // console.log(user)
+  const handleDeleteMarker = (arr, value) => {
+    return arr.filter((ele) => {
+      return ele !== value;
+    });
+  };
 
   return isLoaded ? (
     <div id="lowerIt">
-      {/* <Search /> */}
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={8}
@@ -99,7 +98,6 @@ function Map() {
         {user &&
           markers.map((marker) => (
             <Marker
-              key={marker.time.toISOString()}
               position={{ lat: marker.lat, lng: marker.lng }}
               onClick={() => {
                 setSelected(marker);
@@ -115,12 +113,13 @@ function Map() {
           >
             <div className="infoWindow">
               <h4>VolleyBall Court</h4>
-              <p>Added {formatRelative(selected.time, new Date())}</p>
               <div className="newFlex">
                 <p>
                   Made by: <u>{user.username}</u>
                 </p>
-                <button>Delete</button>
+                <button onClick={() => handleDeleteMarker(markers)}>
+                  Delete
+                </button>
                 {/* {user.username === points.username ? (
                   <button onClick={() => handleDelete(points.position_id)}>Delete</button>
                 ) : null} */}

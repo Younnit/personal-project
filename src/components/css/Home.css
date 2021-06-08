@@ -11,6 +11,7 @@
   justify-content: center;
   width: 90vw;
   margin: auto;
+  margin-bottom: 3rem;
 }
 
 .content {
@@ -26,10 +27,6 @@
   height: auto;
   margin-bottom: 1rem;
   border-radius: 0 0 1rem 1rem;
-}
-
-.btns{
-
 }
 
 .signUpBtn{
@@ -128,8 +125,4 @@
   .homepage{
     width: 60vw;
   }
-
-  /* .content img{
-    width: 100%;
-  } */
 }

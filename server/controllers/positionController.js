@@ -25,7 +25,7 @@ module.exports = {
         if(Number.isNaN(Number(position_id))){
             return res.status(500).send("Please specify which point to delete.")
         }
-        db.positions.delete_position(position_id, user.user_id)
+        db.positions.delete_position(position_id)
         .then((positions) => {
             res.status(200).send(positions)
         }).catch(err => {

@@ -1,0 +1,44 @@
+.footer{
+    height: auto;
+    background-color: rgb(49, 54, 66);
+    width: 90vw;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 0;
+}
+
+.footer h3{
+    color: #fff;
+    font-weight: 400;
+    line-height: 150%;
+    font-size: 16pt;
+}
+
+.footer p{
+    color: #fff;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+u{
+    color: white;
+}
+
+u:hover{
+    color: rgb(202, 202, 202);
+}
+
+@media only screen and (min-width: 768px) {
+    .footer{
+      width: 75vw;
+    }
+  }
+  
+  @media only screen and (min-width: 1300px) {
+    .footer{
+      width: 60vw;
+    }
+  }

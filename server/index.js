@@ -39,15 +39,24 @@ massive({
   .catch((err) => console.log(err));
 
 
+
+// AUTHORIZATION
 app.post('/auth/register', authCTRL.register)
 app.post('/auth/login', authCTRL.login)
 app.get('/auth/logout', authCTRL.logout)
 
+
+// PRODUCTS
 app.get('/api/products', productsCTRL.getTheProducts)
 
+
+// MARKERS
 app.get('/api/positions', positionsCTRL.getPositions)
 app.post('api/create', positionsCTRL.createPosition)
+app.delete('/api/delete/:product_id', positionsCTRL.deletePosition)
 
+
+// EMAILS
 app.post('/api/emails', emailCTRL.addEmail)
 
 app.use(bodyParser.urlencoded({
