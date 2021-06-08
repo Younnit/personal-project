@@ -113,3 +113,23 @@
 .popUp p{
   color: white;
 }
+
+@media only screen and (min-width: 768px) {
+  .homepage{
+    width: 75vw;
+  }
+
+  .content img{
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .homepage{
+    width: 60vw;
+  }
+
+  /* .content img{
+    width: 100%;
+  } */
+}

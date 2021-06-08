@@ -133,3 +133,39 @@ a{
 h3{
   font-size: 14pt;
 }
+
+ul li > a{
+  transition: 0.2s ease-in-out ;
+}
+
+ul li > #link:hover{
+  border-bottom: #fff solid 0.1rem;
+  font-size: 30pt;
+  padding: 0 1rem;
+}
+
+#self-aligner-login:hover{
+  font-size: 14pt;
+}
+
+@media only screen and (min-width: 768px){
+  .header{
+    width: 86vw;
+    margin: auto;
+  }
+
+  .self-aligner-hamburger{
+    left: 25%;
+  }
+}
+
+@media only screen and (min-width: 1300px){
+  .header{
+    width: 71vw;
+    margin: auto;
+  }
+
+  .self-aligner-hamburger{
+    left: 25%;
+  }
+}

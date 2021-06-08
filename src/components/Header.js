@@ -50,22 +50,22 @@ function Header(props) {
           </div>
           <ul>
             <li>
-              <Link to="/" onClick={giveName}>
+              <Link id="link" to="/" onClick={giveName}>
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/map" onClick={giveName}>
+              <Link id="link" to="/map" onClick={giveName}>
                 Map
               </Link>
             </li>
             <li>
-              <Link to="/Products" onClick={giveName}>
+              <Link id="link" to="/Products" onClick={giveName}>
                 Gear
               </Link>
             </li>
             <li>
-              <Link to="/contact" onClick={giveName}>
+              <Link id="link" to="/contact" onClick={giveName}>
                 Contact
               </Link>
             </li>

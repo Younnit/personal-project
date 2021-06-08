@@ -12,9 +12,9 @@ function Home(props) {
   console.log(user);
   console.log(email);
 
-  const addEmail = (value) => {
-    axios.post("/api/emails", { value });
-  };
+  // const addEmail = (value) => {
+  //   axios.post("/api/emails", { value });
+  // };
 
   const handleName = (props) => {
     setFlick(!flick);
@@ -90,6 +90,7 @@ function Home(props) {
           <h3>Please enter your email to join</h3>
           <form onSubmit={handleSubmit}>
             <input
+              type="email"
               value={email}
               placeholder="name@email.com"
               onChange={(e) => setEmail(e.target.value)}
