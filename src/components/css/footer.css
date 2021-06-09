@@ -1,6 +1,7 @@
 .footer{
     height: auto;
-    background-color: rgb(49, 54, 66);
+    /* background-color: #313642; */
+    background-color: #6c80b3;
     width: 90vw;
     margin: auto;
     display: flex;
@@ -29,7 +30,7 @@ u{
 }
 
 u:hover{
-    color: rgb(202, 202, 202);
+    color: #cacaca;
 }
 
 @media only screen and (min-width: 768px) {

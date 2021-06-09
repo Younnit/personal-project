@@ -13,10 +13,6 @@ function Home(props) {
   console.log(user);
   console.log(email);
 
-  // const addEmail = (value) => {
-  //   axios.post("/api/emails", { value });
-  // };
-
   const handleName = () => {
     setFlick(!flick);
     if (flick === true) {
@@ -32,11 +28,7 @@ function Home(props) {
     };
 
     axios.post("/api/sendMail", dataToSubmit);
-  };
-
-  const together = () => {
-    handleName();
-    handleSubmit();
+    setName('')
   };
 
   return (
@@ -50,12 +42,12 @@ function Home(props) {
           Join our Newsletter
         </button> */}
         <div className="btns">
+          <Link to="/map">
+            <button className="signUpBtn different">Find a court</button>
+          </Link>
           <button className="signUpBtn" onClick={handleName}>
             Join our Newsletter
           </button>
-          <Link to="/map">
-            <button className="signUpBtn">Find a court</button>
-          </Link>
         </div>
 
         <h3>Volleyball</h3>
@@ -94,7 +86,7 @@ function Home(props) {
               placeholder="name@email.com"
               onChange={(e) => setEmail(e.target.value)}
             />
-            <button onClick={together}>Submit</button>
+            <button onClick={handleSubmit}>Submit</button>
           </form>
         </div>
       </div>

@@ -17,7 +17,7 @@ function Shop() {
   }, []);
 
   return (
-    <div>
+    <div className='gear'>
       {shop.map((product) => {
         return (
           <div className="eachProduct" key={product.product_id}>

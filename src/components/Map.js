@@ -44,15 +44,13 @@ function Map() {
   useEffect(() => {
     axios.get('/api/positions').then(res => {
       setMarkers(res.data)
+      // setSelected(res.data)
     }).catch(err => console.log(err))
-  }, [] )
-
-  const handleCreate = () => {
-    axios.post('/api/create')
-  }
+  }, [markers] )
 
   const handleDelete = (id) => {
     axios.delete(`/api/delete/${id}`)
+    setSelected(null)
   }
 
   console.log(markers);
@@ -64,15 +62,13 @@ function Map() {
   }, []);
 
   const onMapClick = React.useCallback((e) => {
-    setMarkers((current) => [
-      ...current,
-      {
+    axios.post('/api/create', {
         lat: e.latLng.lat(),
-        lng: e.latLng.lng(),
-      },
-    ]);
+        lng: e.latLng.lng()
+      }) 
+    ;
   }, []);
-
+  
   return isLoaded && user ? (
     <div id="lowerIt">
       <GoogleMap
@@ -94,7 +90,7 @@ function Map() {
           ))}
         {selected ? (
           <InfoWindow
-            position={{ lat: selected.lat, lng: selected.lng }}
+            position={{ lat: Number(selected.lat), lng: Number(selected.lng) }}
             onCloseClick={() => {
               setSelected(null);
             }}
@@ -103,11 +99,11 @@ function Map() {
               <h4>VolleyBall Court</h4>
               <div className="newFlex">
                 <p>
-                  Made by: <u>{markers.username}</u>
+                  Made by: <u>{selected.position_id && selected.username}</u>
                 </p>
-                <button onClick={() => handleDelete(markers.position_id)}>
+                {user.username === selected.username && <button onClick={() => handleDelete(selected.position_id)}>
                   Delete
-                </button>
+                </button>}
               </div>
             </div>
           </InfoWindow>

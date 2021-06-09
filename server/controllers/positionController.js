@@ -17,7 +17,6 @@ module.exports = {
     },
     deletePosition: async (req, res) => {
         const db = req.app.get('db')
-        console.log(req.params, req.session.user)
         const {username} = req.session.user
         const {position_id} = req.params
         if(!username){
