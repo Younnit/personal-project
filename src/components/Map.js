@@ -9,6 +9,7 @@ import {
 
 import "@reach/combobox/styles.css";
 import "./css/Map.css";
+import axios from 'axios'
 
 const libraries = ["places"];
 
@@ -40,19 +41,19 @@ function Map() {
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
 
-  // useEffect(() => {
-  //   axios.get('/api/positions').then(res => {
-  //     setMarkers(res.data)
-  //   }).catch(err => console.log(err))
-  // }, [] )
+  useEffect(() => {
+    axios.get('/api/positions').then(res => {
+      setMarkers(res.data)
+    }).catch(err => console.log(err))
+  }, [] )
 
-  // const handleCreate = () => {
-  //   axios.post('/api/create')
-  // }
+  const handleCreate = () => {
+    axios.post('/api/create')
+  }
 
-  // const handleDelete = (id) => {
-  //   axios.delete(`/api/delete/${id}`)
-  // }
+  const handleDelete = (id) => {
+    axios.delete(`/api/delete/${id}`)
+  }
 
   console.log(markers);
 
@@ -72,13 +73,7 @@ function Map() {
     ]);
   }, []);
 
-  const handleDeleteMarker = (arr, value) => {
-    return arr.filter((ele) => {
-      return ele !== value;
-    });
-  };
-
-  return isLoaded ? (
+  return isLoaded && user ? (
     <div id="lowerIt">
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
@@ -88,17 +83,10 @@ function Map() {
         onClick={onMapClick}
         onLoad={onLoad}
       >
-        {/* {points.map(position => {
-          <Marker
-          key={position.time.toISOString()}
-          position={{lat: position.lat, lng: position.lng}}
-          />
-        })} */}
-
-        {user &&
-          markers.map((marker) => (
+        {markers.map((marker) => (
             <Marker
-              position={{ lat: marker.lat, lng: marker.lng }}
+              position={{ lat: Number(marker.lat), lng: Number(marker.lng) }}
+              key={marker.position_id}
               onClick={() => {
                 setSelected(marker);
               }}
@@ -115,14 +103,11 @@ function Map() {
               <h4>VolleyBall Court</h4>
               <div className="newFlex">
                 <p>
-                  Made by: <u>{user.username}</u>
+                  Made by: <u>{markers.username}</u>
                 </p>
-                <button onClick={() => handleDeleteMarker(markers)}>
+                <button onClick={() => handleDelete(markers.position_id)}>
                   Delete
                 </button>
-                {/* {user.username === points.username ? (
-                  <button onClick={() => handleDelete(points.position_id)}>Delete</button>
-                ) : null} */}
               </div>
             </div>
           </InfoWindow>
@@ -130,7 +115,7 @@ function Map() {
       </GoogleMap>
     </div>
   ) : (
-    <></>
+    <div className="sorry"><h1>Sorry!</h1><br/><h3>You must be logged in to see the map.</h3></div>
   );
 }
 

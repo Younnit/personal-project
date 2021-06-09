@@ -33,3 +33,14 @@
 .infoWindow u{
     color: #1b1b1b;
 }
+
+.infoWindow u:hover{
+    color: #1b1b1b;
+}
+
+.sorry{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

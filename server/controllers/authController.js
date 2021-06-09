@@ -6,7 +6,7 @@ module.exports = {
         const {username, password} = req.body
         const [result] = await db.auth.scan_email(username)
         if(result){
-            return res.status(406).send('Username already in use. Please try a different email.')
+            return res.status(406).send('Username already in use. Please try a different username.')
         }
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
@@ -22,7 +22,7 @@ module.exports = {
         const {username, password} = req.body
         const [user] = await db.auth.scan_email(username)
         if(!user){
-            return res.status(401).send('That email is not in use. Please try again.')
+            return res.status(401).send('That username is not in use. Please register.')
         }
         const isAuthenticated = bcrypt.compareSync(password, user.password)
         if(!isAuthenticated){

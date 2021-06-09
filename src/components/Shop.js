@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { UserContext } from "../context/UserContext";
+// import { UserContext } from "../context/UserContext";
 import "./css/Shop.css";
+import Footer from './Footer'
 
 function Shop() {
-  const { user } = useContext(UserContext);
+  // const { user } = useContext(UserContext);
   const [shop, setShop] = useState([]);
   useEffect(() => {
     axios
@@ -28,6 +29,7 @@ function Shop() {
           </div>
         );
       })}
+      <Footer/>
     </div>
   );
 }

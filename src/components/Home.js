@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import "./css/Home.css";
+import Footer from './Footer'
 
 function Home(props) {
   const { user } = useContext(UserContext);
@@ -16,7 +17,7 @@ function Home(props) {
   //   axios.post("/api/emails", { value });
   // };
 
-  const handleName = (props) => {
+  const handleName = () => {
     setFlick(!flick);
     if (flick === true) {
       setName("flicker");
@@ -25,9 +26,7 @@ function Home(props) {
     }
   };
 
-  const handleSubmit = (e) => {
-    // e.preventDefault();
-
+  const handleSubmit = () => {
     const dataToSubmit = {
       email,
     };
@@ -99,6 +98,7 @@ function Home(props) {
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

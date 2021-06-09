@@ -52,8 +52,8 @@ app.get('/api/products', productsCTRL.getTheProducts)
 
 // MARKERS
 app.get('/api/positions', positionsCTRL.getPositions)
-app.post('api/create', positionsCTRL.createPosition)
-app.delete('/api/delete/:product_id', positionsCTRL.deletePosition)
+app.post('/api/create', positionsCTRL.createPosition)
+app.delete('/api/delete/:position_id', positionsCTRL.deletePosition)
 
 
 // EMAILS
@@ -73,8 +73,3 @@ app.post('/api/sendMail', (req, res) => {
 
   sendEmail(req.body.email, 'hello')
 })
-
-// app.get('/api/cart', cartCTRL.getCart)
-// app.post('/api/cart/:product_id', cartCTRL.addToCart)
-// app.delete('/api/cart/:product_id', cartCTRL.deleteProductInCart)
-// app.put('/api/cart/:product_id', cartCTRL.updateTheItems)
