@@ -7,6 +7,7 @@
 .gear{
     margin: auto;
     width: 90vw;
+    text-align: center;
 }
 
 .eachProduct{
@@ -15,11 +16,25 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 0.25rem;
+    overflow: hidden;
+    text-align: left;
+}
+
+.eachProduct h4{
+    padding-bottom: 1rem;
+}
+
+.eachProduct p{
+    line-height: 150%;
+}
+.eachProduct u{
+    color: #1b1b1b;
 }
 
 .eachProduct img{
-    width: 50%;
-    height: auto;
+    height: 100%;
+    width: auto;
+    margin-right: 0.5rem;
 }
 
 
@@ -31,6 +46,6 @@
   
   @media only screen and (min-width: 1300px) {
     .gear{
-      width: 60vw;
+      width: 30vw;
     }
   }

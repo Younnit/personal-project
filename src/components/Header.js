@@ -32,7 +32,7 @@ function Header(props) {
       </h1>
       <nav>
         <div className='cart-and-stuff'>
-          {user && <Link to='/account'><h3 id="homepage">Hello, {user.username}</h3></Link>}
+          {user && <h3 id="homepage">Hello, {user.username}</h3>}
           {!user && <Link to="/auth"><button id="signInBtn">Log in | Register</button></Link>}
           <div className={`hamburger ${namer}`} onClick={giveName}>
             <div className="bar"></div>

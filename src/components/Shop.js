@@ -18,12 +18,13 @@ function Shop() {
 
   return (
     <div className='gear'>
+      <h1>Gear</h1>
       {shop.map((product) => {
         return (
           <div className="eachProduct" key={product.product_id}>
             <img src={product.img} alt={product.description} />
             <div id='textContainer'>
-              <h4>{product.name}</h4>
+              <h4><u>{product.name}</u></h4>
               <p>{product.description}</p>
             </div>
           </div>
