@@ -9,7 +9,7 @@ import {
 
 import "@reach/combobox/styles.css";
 import "./css/Map.css";
-import axios from 'axios'
+import axios from "axios";
 
 const libraries = ["places"];
 
@@ -42,16 +42,19 @@ function Map() {
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    axios.get('/api/positions').then(res => {
-      setMarkers(res.data)
-      // setSelected(res.data)
-    }).catch(err => console.log(err))
-  }, [markers] )
+    axios
+      .get("/api/positions")
+      .then((res) => {
+        setMarkers(res.data);
+        // setSelected(res.data)
+      })
+      .catch((err) => console.log(err));
+  }, [markers]);
 
   const handleDelete = (id) => {
-    axios.delete(`/api/delete/${id}`)
-    setSelected(null)
-  }
+    axios.delete(`/api/delete/${id}`);
+    setSelected(null);
+  };
 
   console.log(markers);
 
@@ -62,13 +65,12 @@ function Map() {
   }, []);
 
   const onMapClick = React.useCallback((e) => {
-    axios.post('/api/create', {
-        lat: e.latLng.lat(),
-        lng: e.latLng.lng()
-      }) 
-    ;
+    axios.post("/api/create", {
+      lat: e.latLng.lat(),
+      lng: e.latLng.lng(),
+    });
   }, []);
-  
+
   return isLoaded && user ? (
     <div id="lowerIt">
       <GoogleMap
@@ -80,14 +82,14 @@ function Map() {
         onLoad={onLoad}
       >
         {markers.map((marker) => (
-            <Marker
-              position={{ lat: Number(marker.lat), lng: Number(marker.lng) }}
-              key={marker.position_id}
-              onClick={() => {
-                setSelected(marker);
-              }}
-            />
-          ))}
+          <Marker
+            position={{ lat: Number(marker.lat), lng: Number(marker.lng) }}
+            key={marker.position_id}
+            onClick={() => {
+              setSelected(marker);
+            }}
+          />
+        ))}
         {selected ? (
           <InfoWindow
             position={{ lat: Number(selected.lat), lng: Number(selected.lng) }}
@@ -101,9 +103,11 @@ function Map() {
                 <p>
                   Made by: <u>{selected.position_id && selected.username}</u>
                 </p>
-                {user.username === selected.username && <button onClick={() => handleDelete(selected.position_id)}>
-                  Delete
-                </button>}
+                {user.username === selected.username && (
+                  <button onClick={() => handleDelete(selected.position_id)}>
+                    Delete
+                  </button>
+                )}
               </div>
             </div>
           </InfoWindow>
@@ -111,7 +115,11 @@ function Map() {
       </GoogleMap>
     </div>
   ) : (
-    <div className="sorry"><h1>Sorry!</h1><br/><h3>You must be logged in to see the map.</h3></div>
+    <div className="sorry">
+      <h1>Sorry!</h1>
+      <br />
+      <h3>You must be logged in to see the map.</h3>
+    </div>
   );
 }
 

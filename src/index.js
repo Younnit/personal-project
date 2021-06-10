@@ -6,16 +6,18 @@ import reportWebVitals from "./reportWebVitals";
 import { HashRouter, BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
 
-const Router =
-  process.env.NODE_ENV === "development" ? HashRouter : BrowserRouter;
+// const Router =
+//   process.env.NODE_ENV === "development" ? HashRouter : BrowserRouter;
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <HashRouter>
+      {/* <Router> */}
       <UserProvider>
         <App />
       </UserProvider>
-    </Router>
+    </HashRouter>
+    {/* </Router> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
