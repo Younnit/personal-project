@@ -15,8 +15,7 @@ const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
 
 const app = express();
 
-// FIRST STEP TO GO ONLINE(LAST STEP AT THE BOTTOM)
-app.use(express.static(__dirname + "/../build"));
+
 
 
 app.use(express.json());
@@ -74,6 +73,10 @@ app.post("/api/sendMail", (req, res) => {
 
   sendEmail(req.body.email, "hello");
 });
+
+
+// FIRST STEP TO GO ONLINE(LAST STEP AT THE BOTTOM)
+app.use(express.static(__dirname + "/../build"));
 
 // FINAL STEP TO GO ONLINE
 app.get("*", (req, res) => {
