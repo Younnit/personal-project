@@ -79,6 +79,6 @@ app.post("/api/sendMail", (req, res) => {
 app.use(express.static(__dirname + "/../build"));
 
 // FINAL STEP TO GO ONLINE
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../build/index.html"));
+// });
