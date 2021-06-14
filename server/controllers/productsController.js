@@ -1,5 +1,6 @@
 module.exports = {
     getTheProducts: (req, res) => {
+        console.log("Hitting it")
         const db = req.app.get('db')
         db.products.get_the_products().then(products => {
             console.log(products)
