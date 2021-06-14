@@ -12,12 +12,12 @@ const Router =
 ReactDOM.render(
   <React.StrictMode>
     {/* <HashRouter> */}
-      <Router>
+    <Router>
       <UserProvider>
         <App />
       </UserProvider>
-    {/* </HashRouter> */}
     </Router>
+    {/* </HashRouter> */}
   </React.StrictMode>,
   document.getElementById("root")
 );

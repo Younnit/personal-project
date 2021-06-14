@@ -57,14 +57,14 @@ app.delete("/api/delete/:position_id", positionsCTRL.deletePosition);
 // EMAILS
 app.post("/api/emails", emailCTRL.addEmail);
 
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
+// app.use(
+//   bodyParser.urlencoded({
+//     extended: true,
+//   })
+// );
 
-app.use(bodyParser.json());
-app.use(cookieParser());
+// app.use(bodyParser.json());
+// app.use(cookieParser());
 
 const { sendEmail } = require("./mailer");
 
@@ -75,7 +75,7 @@ app.post("/api/sendMail", (req, res) => {
 });
 
 
-// FIRST STEP TO GO ONLINE(LAST STEP AT THE BOTTOM)
+// FIRST STEP TO GO ONLINE
 app.use(express.static(__dirname + "/../build"));
 
 // FINAL STEP TO GO ONLINE
