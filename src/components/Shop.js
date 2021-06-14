@@ -11,6 +11,7 @@ function Shop() {
     axios
       .get("/api/products")
       .then((res) => {
+        console.log(res.data)
         setShop(res.data);
       })
       .catch((err) => console.log(err));
