@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useCallback } from "react";
 import { UserContext } from "../context/UserContext";
 import {
   GoogleMap,
@@ -41,18 +41,23 @@ function Map() {
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
 
-  useEffect(() => {
+  const getMarkers = useCallback(() => {
     axios
       .get("/api/positions")
       .then((res) => {
         setMarkers(res.data);
-        // setSelected(res.data)
       })
       .catch((err) => console.log(err));
-  }, [markers]);
+  }, []);
+
+  useEffect(() => {
+    getMarkers();
+  }, [getMarkers]);
 
   const handleDelete = (id) => {
-    axios.delete(`/api/delete/${id}`);
+    axios.delete(`/api/delete/${id}`).then(() => {
+      getMarkers();
+    });
     setSelected(null);
   };
 
@@ -65,10 +70,17 @@ function Map() {
   }, []);
 
   const onMapClick = React.useCallback((e) => {
-    axios.post("/api/create", {
-      lat: e.latLng.lat(),
-      lng: e.latLng.lng(),
-    });
+    axios
+      .post("/api/create", {
+        lat: e.latLng.lat(),
+        lng: e.latLng.lng(),
+      })
+      .then(() => {
+        getMarkers();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return isLoaded && user ? (
