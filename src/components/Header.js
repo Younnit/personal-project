@@ -1,39 +1,43 @@
-import React, { useState, useContext } from "react";
-import "./css/Header.css";
-import { Link } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
+import React, { useState, useContext } from 'react'
+import './css/Header.css'
+import { Link } from 'react-router-dom'
+import { UserContext } from '../context/UserContext'
 import courtFinder from '../images/courtFinder.png'
 
 function Header(props) {
-  const [toggle, setToggle] = useState(true);
-  const [namer, setNamer] = useState("");
-  const {user, handleLogout} = useContext(UserContext)
+  const [toggle, setToggle] = useState(true)
+  const [namer, setNamer] = useState('')
+  const { user, handleLogout } = useContext(UserContext)
 
   const giveName = (props) => {
-    setToggle(!toggle);
+    setToggle(!toggle)
     if (toggle === true) {
-      setNamer("show");
+      setNamer('show')
     } else {
-      setNamer("");
+      setNamer('')
     }
-  };
+  }
 
   const setAside = () => {
-    giveName();
-    handleLogout();
+    giveName()
+    handleLogout()
   }
 
   return (
     <div className="header">
       <h1>
         <Link to="/" id="logo">
-          <img src={courtFinder} alt='Logo'/>
+          <img src={courtFinder} alt="Logo" />
         </Link>
       </h1>
       <nav>
-        <div className='cart-and-stuff'>
+        <div className="cart-and-stuff">
           {user && <h3 id="homepage">Hello, {user.username}</h3>}
-          {!user && <Link to="/auth"><button id="signInBtn">Log in | Register</button></Link>}
+          {!user && (
+            <Link to="/auth">
+              <button id="signInBtn">Log in | Register</button>
+            </Link>
+          )}
           <div className={`hamburger ${namer}`} onClick={giveName}>
             <div className="bar"></div>
             <div className="bar"></div>
@@ -60,34 +64,33 @@ function Header(props) {
               </Link>
             </li>
             <li>
-              <Link id="link" to="/Products" onClick={giveName}>
-                Gear
-              </Link>
-            </li>
-            <li>
               <Link id="link" to="/contact" onClick={giveName}>
                 Contact
               </Link>
             </li>
           </ul>
-          {!user && <ul>
-            <li id="self-aligner-login">
-              <Link to="/auth" onClick={giveName}>
-                Login | Register
-              </Link>
-            </li>
-          </ul>}
-          {user && <ul>
+          {!user && (
+            <ul>
               <li id="self-aligner-login">
-                <Link to='/' onClick={
-                  setAside
-                }>Logout</Link>
+                <Link to="/auth" onClick={giveName}>
+                  Login | Register
+                </Link>
               </li>
-            </ul>}
+            </ul>
+          )}
+          {user && (
+            <ul>
+              <li id="self-aligner-login">
+                <Link to="/" onClick={setAside}>
+                  Logout
+                </Link>
+              </li>
+            </ul>
+          )}
         </div>
       </nav>
     </div>
-  );
+  )
 }
 
-export default Header;
+export default Header
