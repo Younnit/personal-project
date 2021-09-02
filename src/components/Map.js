@@ -10,6 +10,7 @@ import {
 import '@reach/combobox/styles.css'
 import './css/Map.css'
 import axios from 'axios'
+import react from 'react'
 
 const libraries = ['places']
 
@@ -78,24 +79,28 @@ function Map() {
   }, [])
 
   const onMapClick = React.useCallback((e) => {
-    axios
-      .post('/api/create', {
-        lat: e.latLng.lat(),
-        lng: e.latLng.lng(),
-      })
-      .then(() => {
-        getMarkers()
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    if (user) {
+      axios
+        .post('/api/create', {
+          lat: e.latLng.lat(),
+          lng: e.latLng.lng(),
+        })
+        .then(() => {
+          getMarkers()
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    } else {
+      alert('Please log in to mark a court on the map')
+    }
   }, [])
 
-  return isLoaded && user ? (
+  return isLoaded ? (
     <div id="lowerIt">
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={8}
+        zoom={13}
         center={center}
         options={options}
         onClick={onMapClick}
@@ -123,10 +128,14 @@ function Map() {
                 <p>
                   Made by: <u>{selected.position_id && selected.username}</u>
                 </p>
-                {user.username === selected.username && (
-                  <button onClick={() => handleDelete(selected.position_id)}>
-                    Delete
-                  </button>
+                {user ? (
+                  user.username === selected.username && (
+                    <button onClick={() => handleDelete(selected.position_id)}>
+                      Delete
+                    </button>
+                  )
+                ) : (
+                  <p></p>
                 )}
               </div>
             </div>
@@ -135,11 +144,7 @@ function Map() {
       </GoogleMap>
     </div>
   ) : (
-    <div className="sorry">
-      <h1>Sorry!</h1>
-      <br />
-      <h3>You must be logged in to see the map.</h3>
-    </div>
+    <div></div>
   )
 }
 
